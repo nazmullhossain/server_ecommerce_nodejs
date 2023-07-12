@@ -8,7 +8,7 @@ const productRouter = require('./routes/product_catagory_route');
 const userRouter = require('./routes/user_route');
 const DB="mongodb+srv://nazmulldata:165257As$@cluster0.xshgf8l.mongodb.net/?retryWrites=true&w=majority"
 
-const PORT=3000;
+const PORT= process.env.PORT | 3001;
 const app = express();
 app.use(express.json());
 app.use(authRouter);
@@ -22,10 +22,9 @@ mongoose.connect(DB).then(()=>{
 }).catch((e)=>{
 console.log(`connectio faild ${e}`);
 })
-app.listen(PORT,()=>{
-    console.log(`connected a port ${PORT}`);
+app.listen(PORT, '0.0.0.0', ()=>{
+    console.log(`Connected at port ${PORT}`);
 })
-
 
 
 // const array = [5, 3, 1, 4, 2];
